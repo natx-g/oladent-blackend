@@ -1,0 +1,26 @@
+package com.oladent.servicio;
+
+import com.oladent.modelo.Paciente;
+import com.oladent.repositorio.PacienteRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class PacienteServicio {
+    private final PacienteRepositorio pacienteRepositorio;
+
+    @Autowired
+    public PacienteServicio(PacienteRepositorio pacienteRepositorio) {
+        this.pacienteRepositorio = pacienteRepositorio;
+    }
+
+    public List<Paciente> obtenerTodosLosPacientes() {
+        return pacienteRepositorio.findAll();
+    }
+
+    public Paciente guardarPaciente(Paciente paciente) {
+        return pacienteRepositorio.save(paciente);
+    }
+}

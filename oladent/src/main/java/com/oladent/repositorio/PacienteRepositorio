@@ -1,0 +1,7 @@
+package com.oladent.repositorio;
+
+import com.oladent.modelo.Paciente;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PacienteRepositorio extends JpaRepository<Paciente, Long> {
+}

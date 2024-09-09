@@ -1,0 +1,29 @@
+package com.oladent.controlador;
+
+import com.oladent.modelo.Paciente;
+import com.oladent.servicio.PacienteServicio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/pacientes")
+public class PacienteControlador {
+    private final PacienteServicio pacienteServicio;
+
+    @Autowired
+    public PacienteControlador(PacienteServicio pacienteServicio) {
+        this.pacienteServicio = pacienteServicio;
+    }
+
+    @GetMapping
+    public List<Paciente> obtenerTodosLosPacientes() {
+        return pacienteServicio.obtenerTodosLosPacientes();
+    }
+
+    @PostMapping
+    public Paciente crearPaciente(@RequestBody Paciente paciente) {
+        return pacienteServicio.guardarPaciente(paciente);
+    }
+}
